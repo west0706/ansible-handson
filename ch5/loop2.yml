@@ -1,0 +1,8 @@
+---
+- name: Test loop
+  hosts: all
+  tasks:
+    - name: Check facts 
+      debug:
+        var: hostvars
+        #msg: This is TEST 

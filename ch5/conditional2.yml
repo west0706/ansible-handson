@@ -1,0 +1,13 @@
+---
+- name: Condition test 
+  hosts: all 
+
+  tasks:
+    - name: verify the service
+      command: systemctl is-active httpd
+      register: res
+
+    - name: display when
+      debug:
+        msg: Success!
+      when: res.rc == 0

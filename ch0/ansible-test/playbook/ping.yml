@@ -1,0 +1,22 @@
+---
+- name: ping the host target
+  hosts: web,db
+  tasks:
+    - ping: # ping module
+
+- name: test the new line
+  hosts: web
+  tasks:
+    - name: ( | ) test
+      debug:
+        msg: |
+          This
+          is
+          newline
+
+    - name: ( > ) test
+      debug:
+        msg: >
+          This
+          is
+          newline

@@ -1,0 +1,21 @@
+---
+- name: Handler test
+  hosts: all
+  gather_facts: no
+  become: true
+  remote_user: devops
+  tasks:
+  - name: copy the config
+    copy:
+      src: ./filea
+      dest: /tmp/filea
+    notify:
+      restart apache
+      
+
+  handlers:
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+

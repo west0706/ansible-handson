@@ -1,0 +1,8 @@
+---
+- name: Test jinja2 templete
+  hosts: all
+  tasks:
+    - name: deploy /ets/hosts
+      template:
+        src: 
+

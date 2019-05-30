@@ -1,0 +1,13 @@
+---
+- name: Test loop
+  hosts: all
+  vars:
+    users:
+      - jjy
+      - jjy2
+      - jjy3
+  tasks:
+    - name: loop items
+      debug:
+        msg: "Debug Loop: {{ item }}"
+      loop: "{{ users }}"

@@ -1,0 +1,20 @@
+---
+- name: Test Array
+  hosts: web
+  vars:
+    users:
+      bjones:
+        first_name: Bob
+        last_name: Jones
+        home_dir: /home/bjones
+      acook:
+        first:name: Anne
+        last_name: Cook 
+        home_dir: /home/acook
+
+  tasks:
+    - name: Display the Array
+      debug:
+        #var: users
+        var: users['acook']['last_name']
+

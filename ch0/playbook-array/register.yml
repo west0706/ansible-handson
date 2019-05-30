@@ -1,0 +1,11 @@
+---
+- name: Test reg var
+  hosts: all
+  tasks:
+    - name: Command hostname
+      command: hostname
+      register: rst
+    - name: Display register var
+      debug:
+        var: rst
+        #var: rst['stdout']

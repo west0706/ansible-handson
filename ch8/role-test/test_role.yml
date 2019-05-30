@@ -1,0 +1,12 @@
+---
+- name: Variable test
+  hosts: all
+#  gather_facts: no
+  vars:
+    test: PLAY
+  roles:
+    - role: test_role 
+      test: CALL-ROLE #vars
+
+
+

@@ -1,0 +1,14 @@
+---
+- name: Loop register test
+  hosts: all 
+  tasks:
+    - name: loop echo task
+      shell: "echo This is my item: {{ item }}"
+      loop:
+        - one
+        - two
+      register: results
+
+    - name: show results variables
+      debug:
+        var: ansible_facts.devices 

@@ -1,0 +1,42 @@
+---
+- name: Install the web 
+  hosts: web
+  remote_user: "{{ remote_user }}"
+  become: True
+  vars:
+    pkg_httpd: 
+      - httpd 
+      - mod_ssl
+    svc_httpd: httpd
+#  vars_files:
+#    - vars/vars.yml
+
+  tasks:
+    - name: install httpd,mod_ssl package
+      yum: name={{ item.package }} state=latest
+      loop:
+      - { package: "{{ pkg_httpd }}" }
+
+    - name: start the service
+      service:
+        name: "{{ svc_httpd }}" 
+        state: started
+        enabled: true
+
+        
+- name: Install the db
+  hosts: db 
+  remote_user: "{{ remote_user }}"
+  become: True
+  tasks:
+    - name: intall mariadb package
+      yum: 
+        name: mariadb-server
+        state: latest
+
+    - name: ensure db service
+      service:
+        name: mariadb
+        state: started
+        enabled: true
+

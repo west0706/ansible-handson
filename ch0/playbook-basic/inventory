@@ -1,0 +1,10 @@
+[web]
+servera		ansible_user=devops
+serverb		ansible_user=root
+
+[db]
+serverc
+serverd
+
+[db:vars]
+ansible_user=testuser

@@ -1,0 +1,12 @@
+---
+- name: Magic variables
+  hosts: servera 
+  tasks:
+    - name: display hostvars
+      debug:
+        #var: hostvars.servera
+        #msg: "{{ hostvars }}"
+        var: inventory_hostname
+        #var: groups
+        #var: groups['web']
+

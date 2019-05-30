@@ -1,0 +1,23 @@
+---
+- name: Playbook Control Lab
+  hosts: webservers
+  vars_files: vars.yml
+  tasks:
+    #Fail Fast Message
+    - name: show failed system requirements message
+      fail:
+        msg: "The {{ inventory_hostname }} did note meet minimum reqs."
+      when: >
+        ansible_memtotal_mb*1024*1024 < min_ram_megabytes*1000000 or
+        ansible_distribution != "Redhat"
+
+    #Install all Packages
+
+    #Enable and start services
+
+    #Block of config tasks
+
+    #Configure the firewall
+
+  #Add handlers
+
